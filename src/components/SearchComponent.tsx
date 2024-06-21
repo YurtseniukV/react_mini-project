@@ -6,7 +6,7 @@ const handleSubmit = () => {}
 const handleChange = () =>{}
 
     return (
-        <div className="container">
+        <div className="container right">
             <div className="row">
 <section className="col s4 offset-s3">
     <form action="" onSubmit={handleSubmit}>

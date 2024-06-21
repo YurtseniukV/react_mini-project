@@ -1,18 +1,19 @@
 import React from 'react';
 import SearchComponent from "./SearchComponent";
-
+import {Link} from "react-router-dom";
+import classes from "./Header.module.css";
 const HeaderComponent = () => {
     return (
         <nav>
             <div className="nav-wrapper container">
-                <a href="#" className="brand-logo">Movies finder</a>
                 <SearchComponent/>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
-                </ul>
+               <div className={classes.Header}>
+                   <Link to={''}>Home</Link>
+                   <Link to={'/movies'}>Movies</Link>
+                   <Link to={'/genres'}>Genres</Link>
+               </div>
             </div>
+
         </nav>
     );
 };
