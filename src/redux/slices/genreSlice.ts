@@ -29,6 +29,7 @@ const genreSlice = createSlice({
         builder
             .addCase(loadGenres.fulfilled, (state, action) => {
                 state.genres = action.payload;
+                state.error = null;
             })
             .addCase(loadGenres.rejected, (state, action) => {
                 state.error = action.error.message || 'Something went wrong';

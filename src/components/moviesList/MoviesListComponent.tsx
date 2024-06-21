@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../../redux/hooks/hooks";
 import {moviesActions} from "../../redux/slices/moviesSlice";
-import MovieListCard from "./MovieListCard";
-import Pagination from "./Pagination";
+import MovieListCardComponent from "./MovieListCardComponent";
+import PaginationComponent from "./PaginationComponent";
 //контейнер зі списком усіх фільмів
-const MoviesList = () => {
+const MoviesListComponent = () => {
 
     let dispatch = useAppDispatch();
     let {movies} = useAppSelector(state => state.moviesSlice)
@@ -18,12 +18,12 @@ const MoviesList = () => {
         <div>
             <div>
                 { movies.map(movie=> (
-                    <MovieListCard key={movie.id} movie={movie}/>
+                    <MovieListCardComponent key={movie.id} movie={movie}/>
                 )) }
-                <Pagination/>
+                <PaginationComponent/>
             </div>
         </div>
     );
 };
 
-export default MoviesList;
+export default MoviesListComponent;

@@ -7,7 +7,7 @@ interface IProps {
     movie: IMovieModel
 }
 
-const MovieListCard: FC<IProps> = ({movie}) => {
+const MovieListCardComponent: FC<IProps> = ({movie}) => {
 
     return (
         <div>
@@ -21,4 +21,4 @@ const MovieListCard: FC<IProps> = ({movie}) => {
     );
 };
 
-export default MovieListCard;
+export default MovieListCardComponent;

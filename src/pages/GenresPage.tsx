@@ -1,6 +1,6 @@
 import React from 'react';
 import GenreFilterComponent from "../components/genreFilter/genreFilterComponent";
-import MoviesList from "../components/moviesList/MoviesList";
+import MoviesListComponent from "../components/moviesList/MoviesListComponent";
 
 const GenresPage = () => {
     return (
@@ -8,7 +8,7 @@ const GenresPage = () => {
             <div>
                 <h1>films by genre</h1>
                 <GenreFilterComponent/>
-                <MoviesList/>
+                <MoviesListComponent/>
             </div>
             Genres
         </div>

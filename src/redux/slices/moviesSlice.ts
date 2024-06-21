@@ -30,6 +30,14 @@ export const loadMovieById = createAsyncThunk('moviesSlice/loadMovieById', async
     }
 })
 
+export const loadMoviesByGenre = createAsyncThunk('moviesSlice/loadMoviesByGenre', async (genreId: number, thunkAPI) => {
+    try {
+        const movies = await movieServices.getMoviesByGenre(genreId);
+        return movies;
+    } catch (e) {
+        throw e;
+    }
+});
 
 const moviesSlice = createSlice({
     name: 'movies',
@@ -48,6 +56,12 @@ const moviesSlice = createSlice({
             })
             .addCase(loadMovieById.rejected, (state, action) => {
                 state.error = action.error.message || 'Something went wrong';
+            })
+            .addCase(loadMoviesByGenre.fulfilled, (state, action) => {
+                state.movies = action.payload;
+            })
+            .addCase(loadMoviesByGenre.rejected, (state, action) => {
+                state.error = action.error.message || 'Something went wrong';
             });
     },
 });
@@ -57,7 +71,8 @@ const {reducer: moviesReducer, actions} = moviesSlice;
 const moviesActions = {
     ...actions,
     loadMovies,
-    loadMovieById
+    loadMovieById,
+    loadMoviesByGenre
 };
 
 export {

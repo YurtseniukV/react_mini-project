@@ -39,7 +39,12 @@ axiosInstance.interceptors.request.use(
      getMovieById : async (id: string): Promise<IMovieModel> => {
          const response = await axiosInstance.get<IMovieModel>(`/movie/${id}`);
          return response.data;
-     }
+     },
+
+     getMoviesByGenre: async (genreId: number):Promise<IMovieModel[]> => {
+         const response = await axios.get<IMovieModel[]>(`/api/movies?genreId=${genreId}`);
+         return response.data;
+     },
 
 
 };
