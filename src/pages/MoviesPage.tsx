@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PosterPreviewComponent = () => {
+const MoviesPage = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const PosterPreviewComponent = () => {
     );
 };
 
-export default PosterPreviewComponent;
+export default MoviesPage;

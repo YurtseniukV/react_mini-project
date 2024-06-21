@@ -1,7 +1,6 @@
-
 import {configureStore} from "@reduxjs/toolkit";
-import {moviesReducer} from "../slices/moviesSlice";
-import { genresReducer } from '../slices/genreSlice';
+import {genresReducer} from "./slices/genreSlice";
+import {moviesReducer} from "./slices/moviesSlice";
 
 
 export type RootState = ReturnType<typeof store.getState>;
@@ -14,6 +13,3 @@ export const store = configureStore({
         genresSlice: genresReducer,
     },
 });
-
-
-

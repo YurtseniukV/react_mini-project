@@ -1,10 +1,10 @@
 import axios from "axios";
 import {baseURL, urls} from "../constants/urls";
-import {IResponseModel} from "../models/IResponseModel";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
-import {IGenreModel} from "../models/IGenreModel";
 import {IMovieModel} from "../models/IMovieModel";
+import {IResponseModel} from "../models/IResponseModel";
+import {IGenreModel} from "../models/IGenreModel";
+
+
 
 export const axiosInstance = axios.create({
     baseURL:baseURL
@@ -24,48 +24,48 @@ axiosInstance.interceptors.request.use(
 );
 
 
- const movieServices = {
+const movieServices = {
 
     getAllMovies:async ():Promise<IMovieModel[]>=> {
         try {
             const response = await axiosInstance.get<IResponseModel>(urls.movies.base);
             return response.data.results;
         } catch (e) {
-            console.error('Error fetching movies:', error);
-            throw error;
+            console.error('Error fetching movies:', e);
+            throw e;
         }
     },
 
-     getMovieById : async (id: string): Promise<IMovieModel> => {
-         const response = await axiosInstance.get<IMovieModel>(`/movie/${id}`);
-         return response.data;
-     },
+    getMovieById : async (id: string): Promise<IMovieModel> => {
+        const response = await axiosInstance.get<IMovieModel>(`/movie/${id}`);
+        return response.data;
+    },
 
-     getMoviesByGenre: async (genreId: number):Promise<IMovieModel[]> => {
-         const response = await axios.get<IMovieModel[]>(`/api/movies?genreId=${genreId}`);
-         return response.data;
-     },
+    getMoviesByGenre: async (genreId: number):Promise<IMovieModel[]> => {
+        const response = await axios.get<IMovieModel[]>(`/api/movies?genreId=${genreId}`);
+        return response.data;
+    },
 
 
 };
 
 
-   const genreServices={
-       getAllGenres: async ():Promise<IGenreModel[]> => {
+const genreServices={
+    getAllGenres: async ():Promise<IGenreModel[]> => {
 
-           try {
-               const response = await axiosInstance.get<IGenreModel[]>(urls.genres.base);
-               return response.data;
-           } catch (error) {
-               console.error('Error fetching genres:', error);
-               throw error;
-           }
+        try {
+            const response = await axiosInstance.get<IGenreModel[]>(urls.genres.base);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching genres:', error);
+            throw error;
+        }
 
-   }
- }  ;
+    }
+}  ;
 
 
 export {
-     movieServices,
+    movieServices,
     genreServices
 }

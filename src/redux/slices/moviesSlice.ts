@@ -58,7 +58,7 @@ const moviesSlice = createSlice({
                 state.error = action.error.message || 'Something went wrong';
             })
             .addCase(loadMoviesByGenre.fulfilled, (state, action) => {
-                state.movies = action.payload;
+                state.movies = state.movies.concat(action.payload);
             })
             .addCase(loadMoviesByGenre.rejected, (state, action) => {
                 state.error = action.error.message || 'Something went wrong';
