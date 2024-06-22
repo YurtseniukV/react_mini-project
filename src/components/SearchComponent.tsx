@@ -1,23 +1,41 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
+import {IMovieModel} from "../models/IMovieModel";
+import {movieServices} from "../services/api.services";
+import PosterPreviewComponent from "./PosterPreviewComponent";
 
-const SearchComponent:FC = () => {
+const SearchComponent: React.FC = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState<IMovieModel[]>([]);
 
-const handleSubmit = () => {}
-const handleChange = () =>{}
+    const handleSearch = async () => {
+        try {
+            const results = await movieServices.searchMoviesByTitle(searchTerm);
+            const filteredResults = results.filter(movie =>
+                movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setSearchResults(filteredResults);
+        } catch (error) {
+            console.error('Error searching movies:', error);
+
+        }
+    };
 
     return (
-        <div className="container right">
-            <div className="row">
-<section className="col s4 offset-s3">
-    <form action="" onSubmit={handleSubmit}>
-        <div className="input-field">
-            <input type="text" placeholder="search movie" onChange={handleChange}/>
-        </div>
-    </form>
-</section>
-            </div>
+        <div>
+            <form className="d-flex" role="search">
+                <input className="form-control me-2" type="search" placeholder="Search movies by title..."
+                       aria-label="Search" value={searchTerm}
+                       onChange={(e) => setSearchTerm(e.target.value)}/>
+                <button onClick={handleSearch} className="btn btn-outline-success" type="submit">Search
+                </button>
+            </form>
 
-            </div>
+            {searchResults.map((movie) => (
+                <div><PosterPreviewComponent key={movie.id} movie={movie}/>{movie.title}</div>
+            ))}
+
+
+        </div>
     );
 };
 

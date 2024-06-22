@@ -2,20 +2,21 @@ import React from 'react';
 import SearchComponent from "./SearchComponent";
 import {Link} from "react-router-dom";
 import classes from "./Header.module.css";
+import UserInfoComponent from "./UserInfoComponent";
+import GenreDropdown from "./GenreDropdown";
 const HeaderComponent = () => {
     return (
-        <nav>
-            <div className="nav-wrapper container">
+            <div>
+                <div className={classes.Header}>
+                    <Link to={'/'}>Home</Link>
+                    <Link to={'/movies'}>Movies</Link>
+                    <GenreDropdown/>
+                    <UserInfoComponent/>
+                </div>
                 <SearchComponent/>
-               <div className={classes.Header}>
-                   <Link to={''}>Home</Link>
-                   <Link to={'/movies'}>Movies</Link>
-                   <Link to={'/genres'}>Genres</Link>
-               </div>
             </div>
-
-        </nav>
     );
 };
 
 export default HeaderComponent;
+
