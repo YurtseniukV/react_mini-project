@@ -1,6 +1,6 @@
 import {IMovieModel} from "./IMovieModel";
 
-export interface IResponseModel{
+export interface IMovieResponseModel {
     page: number,
     results:IMovieModel[],
     total_pages: number,

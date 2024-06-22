@@ -1,13 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/hooks";
-import {loadMovies} from "../redux/slices/moviesSlice";
+import {loadMovies, loadMoviesByGenre} from "../redux/slices/moviesSlice";
 import MovieListComponent from "../components/MovieListComponent";
+
 
 const MoviesPage = () => {
 
     const dispatch = useAppDispatch();
     const movies = useAppSelector(state => state.moviesSlice.movies)
     const error = useAppSelector(state => state.moviesSlice.error)
+
 
     useEffect(() => {
         dispatch(loadMovies())
@@ -16,9 +18,10 @@ const MoviesPage = () => {
     return (
         <div>
             {error && <div>Error: {error}</div>}
-            <MovieListComponent movies={movies} />
+                    <MovieListComponent movies={movies} />
+
         </div>
     );
-};
+            };
 
-export default MoviesPage;
+            export default MoviesPage;

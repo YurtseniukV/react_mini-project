@@ -16,6 +16,7 @@ export const loadGenres = createAsyncThunk('genresSlice/loadGenres', async (_, t
     try {
         const genres = await genreServices.getAllGenres();
         return genres;
+        console.log(genres)
     } catch (e) {
         throw e;
     }

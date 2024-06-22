@@ -1,8 +1,9 @@
 import axios, {AxiosError, isAxiosError} from "axios";
 import {baseURL, urls} from "../constants/urls";
 import {IMovieModel} from "../models/IMovieModel";
-import {IResponseModel} from "../models/IResponseModel";
+import {IMovieResponseModel} from "../models/IMovieResponseModel";
 import {IGenreModel} from "../models/IGenreModel";
+import {IGenreResponseModel} from "../models/IGenreResponseModel";
 
 
 export const apiToken:string = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDNmNjZkOGYxZmE2Zjg5NjNmYTVmOTJjNTAzMTJjNSIsIm5iZiI6MTcxOTA0NzE4My4zMDgwODQsInN1YiI6IjY2NzQxODM4NjVhNDFkMjEyMGRlMjVkNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BP4xnawMH36NBqD2l6CtfKJLqm5v2dHZx1fBpNQot2w';
@@ -27,7 +28,7 @@ const movieServices = {
 
     getAllMovies:async ():Promise<IMovieModel[]>=> {
         try {
-            const response = await axiosInstance.get<IResponseModel>(urls.movies.base);
+            const response = await axiosInstance.get<IMovieResponseModel>(urls.movies.base);
             return response.data.results;
         } catch (error) {
             handleAxiosError(error);
@@ -47,7 +48,7 @@ const movieServices = {
 
     getMoviesByGenre: async (genreId: number):Promise<IMovieModel[]> => {
         try {
-            const response = await axiosInstance.get<IMovieModel[]>(`/api/movies?genreId=${genreId}`);
+            const response = await axiosInstance.get<IMovieModel[]>(`/discover/movie?api_key=${apiToken}&with_genres=${genreId}`); ///api/movies?genreId=${genreId}
             return response.data;
         } catch (error) {
             handleAxiosError(error);
@@ -57,7 +58,7 @@ const movieServices = {
 
     searchMoviesByTitle: async (title: string): Promise<IMovieModel[]> => {
         try {
-            const response = await axiosInstance.get<IResponseModel>(`/search/movie?query=${encodeURIComponent(title)}`);
+            const response = await axiosInstance.get<IMovieResponseModel>(`/search/movie?query=${encodeURIComponent(title)}`);
             return response.data.results;
         } catch (error) {
             handleAxiosError(error);
@@ -72,8 +73,9 @@ const genreServices={
     getAllGenres: async ():Promise<IGenreModel[]> => {
 
         try {
-            const response = await axiosInstance.get<IGenreModel[]>(urls.genres.base);
-            return response.data;
+            const response = await axiosInstance.get<IGenreResponseModel>(urls.genres.base);
+            return response.data.genres;
+
         } catch (error) {
             handleAxiosError(error);
             throw error;
