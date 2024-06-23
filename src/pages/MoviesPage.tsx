@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/hooks";
-import {loadMovies, loadMoviesByGenre} from "../redux/slices/moviesSlice";
+import {loadMovies} from "../redux/slices/moviesSlice";
 import MovieListComponent from "../components/MovieListComponent";
 
 

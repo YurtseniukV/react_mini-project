@@ -1,0 +1,10 @@
+/* dark-theme.css */
+body {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+/* Приклад стилів для інших елементів у темній темі */
+.form-check-input:checked + .form-check-label::before {
+    background-color: #17a2b8; /* Приклад кольору для чекбокса */
+}

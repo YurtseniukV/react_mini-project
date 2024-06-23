@@ -1,0 +1,10 @@
+/* light-theme.css */
+body {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* Приклад стилів для інших елементів у світлій темі */
+.form-check-input:checked + .form-check-label::before {
+    background-color: #007bff; /* Приклад кольору для чекбокса */
+}
