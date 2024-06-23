@@ -5,11 +5,13 @@ import {movieServices} from "../../services/api.services";
 interface MoviesState {
     movies: IMovieModel[];
     error: string | null;
+    totalPages:number
 }
 
 const initialState: MoviesState = {
     movies: [],
     error: null,
+    totalPages:0
 };
 
 export const loadMovies =
@@ -62,7 +64,8 @@ const moviesSlice = createSlice({
                 state.error = action.error.message || 'Something went wrong';
             })
             .addCase(loadMoviesByGenre.fulfilled, (state, action) => {
-                state.movies = state.movies.concat(action.payload);
+                state.movies = action.payload;
+
             })
             .addCase(loadMoviesByGenre.rejected, (state, action) => {
                 state.error = action.error.message || 'Something went wrong';

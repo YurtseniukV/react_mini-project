@@ -33,9 +33,7 @@ const GenresPage = () => {
                     <div>Select a genre to see movies</div>
                 )}
             </div>
-            {/*<div style={{ width: '80%' }}>*/}
-            {/*    <MovieListComponent movies={movies} />*/}
-            {/*</div>*/}
+
         </div>
     );
 };

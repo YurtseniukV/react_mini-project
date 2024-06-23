@@ -19,10 +19,10 @@ const MoviesListByGenreComponent:FC<IProps> = ({genreId}) => {
     }, [dispatch, genreId]);
 
     return (
-            <div>
-                {error && <div>Error: {error}</div>}
-                <MovieListComponent movies={movies}/>
-            </div>
+        <div>
+            {error && <div>Error: {error}</div>}
+            <MovieListComponent movies={movies}/>
+        </div>
 
     );
 };

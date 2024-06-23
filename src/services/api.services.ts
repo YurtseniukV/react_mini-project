@@ -48,8 +48,8 @@ const movieServices = {
 
     getMoviesByGenre: async (genreId: number):Promise<IMovieModel[]> => {
         try {
-            const response = await axiosInstance.get<IMovieModel[]>(`/discover/movie?api_key=${apiToken}&with_genres=${genreId}`); ///api/movies?genreId=${genreId}
-            return response.data;
+            const response = await axiosInstance.get<IMovieResponseModel>(`/discover/movie?api_key=${apiToken}&with_genres=${genreId}`); ///api/movies?genreId=${genreId}
+            return response.data.results;
         } catch (error) {
             handleAxiosError(error);
             throw error;
