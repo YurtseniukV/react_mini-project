@@ -12,7 +12,9 @@ const initialState: MoviesState = {
     error: null,
 };
 
-export const loadMovies = createAsyncThunk('moviesSlice/loadMovies', async (_, thunkAPI) => {
+export const loadMovies =
+    createAsyncThunk('moviesSlice/loadMovies',
+        async (_, thunkAPI) => {
     try {
         const movies = await movieServices.getAllMovies();
         return movies;
@@ -30,7 +32,9 @@ export const loadMovieById = createAsyncThunk('moviesSlice/loadMovieById', async
     }
 })
 
-export const loadMoviesByGenre = createAsyncThunk('moviesSlice/loadMoviesByGenre', async (genreId: number, thunkAPI) => {
+export const loadMoviesByGenre = createAsyncThunk
+('moviesSlice/loadMoviesByGenre',
+    async (genreId: number, thunkAPI) => {
     try {
         const movies = await movieServices.getMoviesByGenre(genreId);
         return movies;

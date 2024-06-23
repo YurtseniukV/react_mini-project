@@ -1,57 +1,46 @@
-import React, {useEffect, useState} from 'react';
+import React, { useContext } from 'react';
+import { Link } from "react-router-dom";
 import SearchComponent from "./SearchComponent";
-import {Link} from "react-router-dom";
-import classes from "./Header.module.css";
 import UserInfoComponent from "./UserInfoComponent";
-import "../lightTheme.css"
+import classes from "./Header.module.css";
+import { ThemeContext } from "../components/ThemeContext";
+import "../assets/css/theme.css"
 
-const HeaderComponent = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+const HeaderComponent: React.FC = () => {
+    const themeContext = useContext(ThemeContext);
 
-    useEffect(() => {
+    if (!themeContext) {
+        throw new Error('ThemeContext must be used within a ThemeProvider');
+    }
 
-        if (isDarkTheme) {
-            document.body.classList.add('dark-theme');
-        } else {
-            document.body.classList.remove('dark-theme');
-        }
-    }, [isDarkTheme]);
+    const { theme, toggleTheme } = themeContext;
 
-    const toggleTheme = () => {
+    return (
+        <div>
+            <div className={classes.Header}>
+                <Link to={'/'}>Home</Link>
+                <Link to={'/movies'}>Movies</Link>
+                <Link to={'/genres'}>Genres</Link>
+                <SearchComponent />
 
-        setIsDarkTheme(!isDarkTheme);
-    };
-
-
-            return (
-            <div>
-                <div className={classes.Header}>
-                    <Link to={'/'}>Home</Link>
-                    <Link to={'/movies'}>Movies</Link>
-                    <Link to={'/genres'}>Genres</Link>
-                    <SearchComponent/>
-
-                    <div className="form-check form-switch">
-                        <input
-                            className="form-check-input"
-                            type="checkbox"
-                            role="switch"
-                            id="flexSwitchCheckDefault"
-                            checked={isDarkTheme}
-                            onChange={toggleTheme}
-                        />
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-                            {isDarkTheme ? 'Dark Mode' : 'Light Mode'}
-                        </label>
-                    </div>
-
-                    <UserInfoComponent/>
+                <div className="form-check form-switch">
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckDefault"
+                        checked={theme === 'dark'}
+                        onChange={toggleTheme}
+                    />
+                    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                        {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                    </label>
                 </div>
 
+                <UserInfoComponent />
             </div>
-            );
-
+        </div>
+    );
 };
 
 export default HeaderComponent;
-
