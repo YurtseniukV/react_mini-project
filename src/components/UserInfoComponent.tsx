@@ -3,7 +3,7 @@ import React from 'react';
 const UserInfoComponent = () => {
     return (
         <div>
-            ikon()
+            ikon()//тут буде іконка користувача
         </div>
     );
 };

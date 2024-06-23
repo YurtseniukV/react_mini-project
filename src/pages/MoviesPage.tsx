@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/hooks";
 import {loadMovies} from "../redux/slices/moviesSlice";
 import MovieListComponent from "../components/MovieListComponent";

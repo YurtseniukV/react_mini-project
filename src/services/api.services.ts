@@ -86,7 +86,6 @@ const genreServices={
 
 function handleAxiosError(error: AxiosError<any> | unknown) {
     if (isAxiosError(error)) {
-        // Якщо помилка є AxiosError, можна отримати деталі з error.response, error.request або error.config
         if (error.response) {
             console.error('Request failed with status:', error.response.status);
             console.error('Response data:', error.response.data);
@@ -97,7 +96,6 @@ function handleAxiosError(error: AxiosError<any> | unknown) {
         }
         console.error('Error config:', error.config);
     } else {
-        // Інакше, якщо тип не є AxiosError, просто виведемо загальну інформацію про помилку
         console.error('Unhandled error:', error);
     }
 }
