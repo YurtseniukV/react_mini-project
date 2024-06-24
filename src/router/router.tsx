@@ -6,19 +6,20 @@ import GenresPage from "../pages/GenresPage";
 import SearchResultPage from "../pages/SearchResultPage";
 
 
-
 const router = createBrowserRouter([
-    {path:'', element:<MainLayout/>,
-        children:[
-            {path:'/', element:<MoviesPage/>},
-            {path:'movies', element:<MoviesPage/>},
+    {
+        path: '', element: <MainLayout/>,
+        children: [
+            {path: '/', element: <MoviesPage/>},
+            {path: 'movies', element: <MoviesPage/>},
             {path: 'movies/:id', element: <MoviesDetailPage/>},
-            {path:"/genres", element:<GenresPage/>},
-            {path: "genres/:genreId", element:<GenresPage />},
-            { path: 'search', element: <SearchResultPage/> }
-        ]}
+            {path: "/genres", element: <GenresPage/>},
+            {path: "genres/:genreId", element: <GenresPage/>},
+            {path: 'search', element: <SearchResultPage/>}
+        ]
+    }
 ])
 
-export{
+export {
     router
 }

@@ -6,11 +6,10 @@ import {useParams} from "react-router-dom";
 import MoviesListByGenreComponent from "../components/MoviesListByGenreComponent";
 
 
-
 const GenresPage = () => {
 
     const dispatch = useAppDispatch()
-    const { genreId } = useParams<{ genreId: string }>();
+    const {genreId} = useParams<{ genreId: string }>();
     const genres = useAppSelector(state => state.genresSlice.genres)
     // const movies = useAppSelector(state => state.moviesSlice.movies);
 
@@ -18,7 +17,6 @@ const GenresPage = () => {
     useEffect(() => {
         dispatch(genreActions.loadGenres());
     }, [dispatch]);
-
 
 
     return (

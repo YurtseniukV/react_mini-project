@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { IGenreModel } from '../../models/IGenreModel';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {IGenreModel} from '../../models/IGenreModel';
 import {genreServices} from '../../services/api.services';
 
 interface GenresState {
@@ -37,7 +37,7 @@ const genreSlice = createSlice({
     },
 });
 
-const { reducer: genresReducer, actions } = genreSlice;
+const {reducer: genresReducer, actions} = genreSlice;
 
 const genreActions = {
     ...actions,

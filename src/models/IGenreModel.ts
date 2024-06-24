@@ -1,5 +1,5 @@
-export interface IGenreModel{
-        id: number;
-        name: string;
+export interface IGenreModel {
+    id: number;
+    name: string;
 }
 

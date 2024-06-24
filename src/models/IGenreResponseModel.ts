@@ -1,4 +1,4 @@
-export interface IGenreResponseModel{
+export interface IGenreResponseModel {
     genres: {
         id: number;
         name: string;

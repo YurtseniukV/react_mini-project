@@ -7,7 +7,8 @@ import MovieListComponent from "./MovieListComponent";
 interface IProps {
     genreId: number;
 }
-const MoviesListByGenreComponent:FC<IProps> = ({genreId}) => {
+
+const MoviesListByGenreComponent: FC<IProps> = ({genreId}) => {
     const dispatch = useAppDispatch();
     const movies = useAppSelector(state => state.moviesSlice.movies);
     const error = useAppSelector(state => state.moviesSlice.error);

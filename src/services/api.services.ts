@@ -4,13 +4,14 @@ import {IMovieModel} from "../models/IMovieModel";
 import {IMovieResponseModel} from "../models/IMovieResponseModel";
 import {IGenreModel} from "../models/IGenreModel";
 import {IGenreResponseModel} from "../models/IGenreResponseModel";
+import {IUserModel} from "../models/IUserModel";
 
 
-export const apiToken:string = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDNmNjZkOGYxZmE2Zjg5NjNmYTVmOTJjNTAzMTJjNSIsIm5iZiI6MTcxOTA0NzE4My4zMDgwODQsInN1YiI6IjY2NzQxODM4NjVhNDFkMjEyMGRlMjVkNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BP4xnawMH36NBqD2l6CtfKJLqm5v2dHZx1fBpNQot2w';
+export const apiToken: string = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDNmNjZkOGYxZmE2Zjg5NjNmYTVmOTJjNTAzMTJjNSIsIm5iZiI6MTcxOTA0NzE4My4zMDgwODQsInN1YiI6IjY2NzQxODM4NjVhNDFkMjEyMGRlMjVkNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BP4xnawMH36NBqD2l6CtfKJLqm5v2dHZx1fBpNQot2w';
 export const axiosInstance = axios.create({
-    baseURL:baseURL
+    baseURL: baseURL
 });
-
+export const accountID = '21338540'
 axiosInstance.interceptors.request.use(
     (config) => {
         if (apiToken) {
@@ -26,9 +27,9 @@ axiosInstance.interceptors.request.use(
 
 const movieServices = {
 
-    getAllMovies:async ():Promise<IMovieModel[]>=> {
+    getAllMovies: async (page: number): Promise<IMovieModel[]> => {
         try {
-            const response = await axiosInstance.get<IMovieResponseModel>(urls.movies.base);
+            const response = await axiosInstance.get<IMovieResponseModel>(`${urls.movies.base}?page=${page}`);
             return response.data.results;
         } catch (error) {
             handleAxiosError(error);
@@ -36,7 +37,7 @@ const movieServices = {
         }
     },
 
-    getMovieById : async (id: string): Promise<IMovieModel> => {
+    getMovieById: async (id: string): Promise<IMovieModel> => {
         try {
             const response = await axiosInstance.get<IMovieModel>(`/movie/${id}`);
             return response.data;
@@ -46,7 +47,7 @@ const movieServices = {
         }
     },
 
-    getMoviesByGenre: async (genreId: number):Promise<IMovieModel[]> => {
+    getMoviesByGenre: async (genreId: number): Promise<IMovieModel[]> => {
         try {
             const response = await axiosInstance.get<IMovieResponseModel>(`/discover/movie?api_key=${apiToken}&with_genres=${genreId}`); ///api/movies?genreId=${genreId}
             return response.data.results;
@@ -65,12 +66,25 @@ const movieServices = {
             throw error;
         }
     },
+    getUserProfile() {
+
+    }
 };
 
+const userService = {
+    getUserProfile: async (): Promise<IUserModel> => {
+        try {
+            const response = await axiosInstance.get<IUserModel>(`/account/${accountID}`);
+            return response.data;
+        } catch (error) {
+            handleAxiosError(error);
+            throw error;
+        }
+    }
+}
 
-
-const genreServices={
-    getAllGenres: async ():Promise<IGenreModel[]> => {
+const genreServices = {
+    getAllGenres: async (): Promise<IGenreModel[]> => {
 
         try {
             const response = await axiosInstance.get<IGenreResponseModel>(urls.genres.base);
@@ -82,7 +96,7 @@ const genreServices={
         }
 
     }
-}  ;
+};
 
 function handleAxiosError(error: AxiosError<any> | unknown) {
     if (isAxiosError(error)) {
@@ -103,5 +117,6 @@ function handleAxiosError(error: AxiosError<any> | unknown) {
 
 export {
     movieServices,
-    genreServices
+    genreServices,
+    userService
 }

@@ -7,7 +7,7 @@ import {IMovieModel} from "../models/IMovieModel";
 
 const MoviesDetailPage = () => {
 
-    const { id } = useParams<{ id: string }>();
+    const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     let movie: IMovieModel | undefined = useAppSelector(state => state.moviesSlice.movies.find(movie => movie.id === parseInt(id!)));
 

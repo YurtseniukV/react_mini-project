@@ -1,11 +1,10 @@
 import React, {FC} from 'react';
 import {IMovieModel} from "../models/IMovieModel";
-import PosterPreviewComponent from "../components/PosterPreviewComponent";
+import PosterPreviewComponent from "../components/posterPreview/PosterPreviewComponent";
 import {useLocation} from "react-router-dom";
 
 
-
-const SearchResultPage:FC = () => {
+const SearchResultPage: FC = () => {
     const location = useLocation();
     const searchResults = location.state?.searchResults || [];
 
@@ -19,7 +18,7 @@ const SearchResultPage:FC = () => {
                     </div>
                 ))
             ) : (
-                <div>Нічого не знайдено</div>
+                <div>Nothing found</div>
             )}
         </div>
     );

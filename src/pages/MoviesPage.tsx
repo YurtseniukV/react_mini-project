@@ -1,27 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from "../redux/hooks";
-import {loadMovies} from "../redux/slices/moviesSlice";
+import React from 'react';
+import {useAppSelector} from "../redux/hooks";
 import MovieListComponent from "../components/MovieListComponent";
+import PaginationComponent from "../components/PaginationComponent";
+import classes from "../assets/css/MoviesPage.module.css";
 
 
 const MoviesPage = () => {
 
-    const dispatch = useAppDispatch();
     const movies = useAppSelector(state => state.moviesSlice.movies)
     const error = useAppSelector(state => state.moviesSlice.error)
 
 
-    useEffect(() => {
-        dispatch(loadMovies())
-    }, [dispatch]);
-
     return (
-        <div>
+        <div className={classes.container}>
             {error && <div>Error: {error}</div>}
-                    <MovieListComponent movies={movies} />
-
+            <MovieListComponent movies={movies}/>
+            <PaginationComponent/>
         </div>
     );
-            };
+};
 
-            export default MoviesPage;
+export default MoviesPage;

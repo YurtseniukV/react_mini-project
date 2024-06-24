@@ -1,12 +1,13 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import {IGenreModel} from "../models/IGenreModel";
 
 
-interface IProps{
-    genres:IGenreModel[],
+interface IProps {
+    genres: IGenreModel[],
 }
-const GenreListComponent:FC<IProps> = ({genres}) => {
+
+const GenreListComponent: FC<IProps> = ({genres}) => {
 
     return (
         <div>

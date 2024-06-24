@@ -1,5 +1,6 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, {createContext, useState, ReactNode} from 'react';
 import "../assets/css/theme.css"
+
 interface ThemeContextProps {
     theme: string;
     toggleTheme: () => void;
@@ -11,7 +12,7 @@ interface ThemeProviderProps {
     children: ReactNode;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}) => {
     const [theme, setTheme] = useState('light');
 
     const toggleTheme = () => {
@@ -19,7 +20,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{theme, toggleTheme}}>
             <div className={`App ${theme}`}>
                 {children}
             </div>

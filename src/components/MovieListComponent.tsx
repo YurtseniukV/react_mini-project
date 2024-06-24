@@ -3,17 +3,18 @@ import {IMovieModel} from "../models/IMovieModel";
 import MovieListCardComponent from "./MovieListCardComponent";
 
 interface IProps {
-    movies:IMovieModel[]
+    movies: IMovieModel[]
 }
 
-const MovieListComponent:FC<IProps> = ({movies}) => {
+const MovieListComponent: FC<IProps> = ({movies}) => {
     return (
-                <div >
-                    {movies.map(movie => (
-                        <MovieListCardComponent key={movie.id} movie={movie}/>
-                    ))}
-                </div>
-);
+
+        <div>
+            {movies.map(movie => (
+                <MovieListCardComponent key={movie.id} movie={movie}/>
+            ))}
+        </div>
+    );
 };
 
 export default MovieListComponent;

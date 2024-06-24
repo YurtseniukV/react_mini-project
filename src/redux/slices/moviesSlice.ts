@@ -5,25 +5,27 @@ import {movieServices} from "../../services/api.services";
 interface MoviesState {
     movies: IMovieModel[];
     error: string | null;
-    totalPages:number
+    totalPages: number,
+    currentPage: number
 }
 
 const initialState: MoviesState = {
     movies: [],
     error: null,
-    totalPages:0
+    totalPages: 0,
+    currentPage: 1
 };
 
 export const loadMovies =
     createAsyncThunk('moviesSlice/loadMovies',
-        async (_, thunkAPI) => {
-    try {
-        const movies = await movieServices.getAllMovies();
-        return movies;
-    } catch (e) {
-        throw e;
-    }
-});
+        async ({page}: { page: number }, thunkAPI) => {
+            try {
+                const movies = await movieServices.getAllMovies(page);
+                return movies;
+            } catch (e) {
+                throw e;
+            }
+        });
 
 export const loadMovieById = createAsyncThunk('moviesSlice/loadMovieById', async (id: string) => {
     try {
@@ -37,13 +39,13 @@ export const loadMovieById = createAsyncThunk('moviesSlice/loadMovieById', async
 export const loadMoviesByGenre = createAsyncThunk
 ('moviesSlice/loadMoviesByGenre',
     async (genreId: number, thunkAPI) => {
-    try {
-        const movies = await movieServices.getMoviesByGenre(genreId);
-        return movies;
-    } catch (e) {
-        throw e;
-    }
-});
+        try {
+            const movies = await movieServices.getMoviesByGenre(genreId);
+            return movies;
+        } catch (e) {
+            throw e;
+        }
+    });
 
 const moviesSlice = createSlice({
     name: 'movies',
@@ -53,6 +55,7 @@ const moviesSlice = createSlice({
         builder
             .addCase(loadMovies.fulfilled, (state, action) => {
                 state.movies = action.payload;
+                state.currentPage = action.meta.arg.page;
             })
             .addCase(loadMovies.rejected, (state, action) => {
                 state.error = action.error.message || 'Something went wrong';
