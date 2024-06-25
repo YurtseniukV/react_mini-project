@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/hooks";
 import {useSearchParams} from "react-router-dom";
 import {moviesActions} from "../redux/slices/moviesSlice";
+import "../index.css"
 
 const PaginationComponent = () => {
     const dispatch = useAppDispatch();
@@ -29,9 +30,9 @@ const PaginationComponent = () => {
 
 
     return (
-        <div>
-            <button disabled={currentPage <= 1} onClick={prevHandler}>prev</button>
-            <button onClick={nextHandler}>next</button>
+        <div className="paginationButton">
+            <button disabled={currentPage <= 1} onClick={prevHandler}>Prev</button>
+            <button onClick={nextHandler}>Next</button>
         </div>
     );
 };

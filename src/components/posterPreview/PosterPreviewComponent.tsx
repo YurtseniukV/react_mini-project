@@ -2,7 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {IMovieModel} from "../../models/IMovieModel";
 import GenreBadgeComponent from "./GenreBadgeComponent";
 import {genreServices} from "../../services/api.services";
-
+import "../../index.css"
 
 interface IProps {
     movie: IMovieModel
@@ -29,17 +29,14 @@ const PosterPreviewComponent: FC<IProps> = ({movie}) => {
     }, []);
 
     return (
-        <div>
-
-            <div>
+            <div className="posterPreview">
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
-                <div>
+                <div className="genreBadge">
                     {movie.genre_ids.map((genreId, index) => (
                         <GenreBadgeComponent key={index} genreId={genreId} genres={genres}/>
                     ))}
                 </div>
             </div>
-        </div>
     );
 };
 

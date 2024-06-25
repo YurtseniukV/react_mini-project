@@ -1,8 +1,7 @@
 import React, {FC} from 'react';
 import {IMovieModel} from "../models/IMovieModel";
 import MovieInfoComponent from "./MovieInfoComponent";
-import classes from "../assets/css/MoviesPage.module.css";
-
+import "../index.css"
 
 interface IProps {
     movie: IMovieModel
@@ -10,9 +9,17 @@ interface IProps {
 
 const MovieListCardComponent: FC<IProps> = ({movie}) => {
     return (
-            <div className={classes.container}>
+        <div className="movieCardContainer">
+
+            {/*<div className="contentListCard"><h5>Release date</h5>*/}
+            {/*    <p>{movie.release_date}</p></div>*/}
+
+            <div className="movieListCard">
                 <MovieInfoComponent movie={movie}/>
             </div>
+
+
+        </div>
     );
 };
 

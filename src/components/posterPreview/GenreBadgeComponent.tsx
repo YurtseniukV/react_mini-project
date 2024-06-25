@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-
+import "../../index.css"
 
 interface IProps {
     genreId: number;
@@ -10,8 +10,8 @@ const GenreBadgeComponent: FC<IProps> = ({genreId, genres}) => {
     const genreName = genres[genreId];
 
     return (
-        <div className="genreBadge">
-            <span>{genreName}</span>
+        <div>
+            <div><p>{genreName}</p></div>
         </div>
     );
 };

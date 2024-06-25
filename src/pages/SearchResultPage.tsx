@@ -2,14 +2,14 @@ import React, {FC} from 'react';
 import {IMovieModel} from "../models/IMovieModel";
 import PosterPreviewComponent from "../components/posterPreview/PosterPreviewComponent";
 import {useLocation} from "react-router-dom";
-
+import "../index.css"
 
 const SearchResultPage: FC = () => {
     const location = useLocation();
     const searchResults = location.state?.searchResults || [];
 
     return (
-        <div>
+        <div className="searchPage">
             {searchResults.length > 0 ? (
                 searchResults.map((movie: IMovieModel) => (
                     <div key={movie.id}>
@@ -18,7 +18,7 @@ const SearchResultPage: FC = () => {
                     </div>
                 ))
             ) : (
-                <div>Nothing found</div>
+                <h2>Nothing found</h2>
             )}
         </div>
     );

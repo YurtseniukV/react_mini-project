@@ -2,7 +2,7 @@ import React from 'react';
 import {useAppSelector} from "../redux/hooks";
 import MovieListComponent from "../components/MovieListComponent";
 import PaginationComponent from "../components/PaginationComponent";
-import classes from "../assets/css/MoviesPage.module.css";
+import "../index.css"
 
 
 const MoviesPage = () => {
@@ -12,7 +12,7 @@ const MoviesPage = () => {
 
 
     return (
-        <div className={classes.container}>
+        <div className="moviesPage">
             {error && <div>Error: {error}</div>}
             <MovieListComponent movies={movies}/>
             <PaginationComponent/>

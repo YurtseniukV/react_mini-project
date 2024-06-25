@@ -25,7 +25,7 @@ const SearchComponent: FC = () => {
             <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Шукати за назвою..."
+                placeholder="Search movie..."
                 aria-label="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
