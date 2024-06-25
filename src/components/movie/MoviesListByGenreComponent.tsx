@@ -1,8 +1,8 @@
 import React, {FC, useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../redux/hooks";
-import {moviesActions} from "../redux/slices/moviesSlice";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
+import {moviesActions} from "../../redux/slices/moviesSlice";
 import MovieListComponent from "./MovieListComponent";
-
+import "../../index.css"
 
 interface IProps {
     genreId: number;

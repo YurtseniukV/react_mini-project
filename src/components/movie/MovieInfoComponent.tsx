@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import {IMovieModel} from "../models/IMovieModel";
-import PosterPreviewComponent from "./posterPreview/PosterPreviewComponent";
+import {IMovieModel} from "../../models/IMovieModel";
+import PosterPreviewComponent from "../posterPreview/PosterPreviewComponent";
 import {Link} from "react-router-dom";
 // @ts-ignore
 import ReactStars from 'react-rating-stars-component';
@@ -30,7 +30,6 @@ const MovieInfoComponent: FC<IProps> = ({movie}) => {
             <Link to={`/movies/${movie.id}`}>
                 <PosterPreviewComponent movie={movie}/>
             </Link>
-            <h6>{movie.overview}</h6>
         </div>
     );
 };

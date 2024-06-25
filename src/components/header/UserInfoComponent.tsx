@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { loadUserProfile } from "../redux/slices/userSlice";
-import classes from "../assets/css/Header.module.css";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { loadUserProfile } from "../../redux/slices/userSlice";
+import classes from "../../assets/css/Header.module.css";
 
 const UserInfoComponent = () => {
     const dispatch = useAppDispatch();

@@ -1,18 +1,19 @@
 import React, {useEffect} from 'react';
-import GenreListComponent from "../components/GenreListComponent";
+import GenreListComponent from "../components/genre/GenreListComponent";
 import {useAppDispatch, useAppSelector} from "../redux/hooks";
 import {genreActions} from "../redux/slices/genreSlice";
 import {useParams} from "react-router-dom";
-import MoviesListByGenreComponent from "../components/MoviesListByGenreComponent";
-
+import MoviesListByGenreComponent from "../components/movie/MoviesListByGenreComponent";
+import "../index.css"
+import PaginationComponent from "../components/pagination/PaginationComponent";
+import MovieListComponent from "../components/movie/MovieListComponent";
 
 const GenresPage = () => {
 
     const dispatch = useAppDispatch()
     const {genreId} = useParams<{ genreId: string }>();
     const genres = useAppSelector(state => state.genresSlice.genres)
-    // const movies = useAppSelector(state => state.moviesSlice.movies);
-
+const movies = useAppSelector(state => state.moviesSlice.movies)
 
     useEffect(() => {
         dispatch(genreActions.loadGenres());
@@ -20,18 +21,19 @@ const GenresPage = () => {
 
 
     return (
-        <div style={{display: 'flex'}}>
-            <div style={{width: '20%'}}>
+        <div className="GenresPage">
+            <div className="GenresPageContent">
                 <GenreListComponent genres={genres}/>
-            </div>
-            <div style={{width: '80%'}}>
+
+            <div>
                 {genreId ? (
                     <MoviesListByGenreComponent genreId={Number(genreId)}/>
                 ) : (
-                    <div>Select a genre to see movies</div>
+                    <MovieListComponent movies={movies}/>
                 )}
             </div>
-
+        </div>
+<PaginationComponent/>
         </div>
     );
 };

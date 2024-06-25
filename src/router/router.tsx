@@ -10,12 +10,12 @@ const router = createBrowserRouter([
     {
         path: '', element: <MainLayout/>,
         children: [
-            {path: '/', element: <MoviesPage/>},
+            {index:true, element: <MoviesPage/>},
             {path: 'movies', element: <MoviesPage/>},
             {path: 'movies/:id', element: <MoviesDetailPage/>},
             {path: "/genres", element: <GenresPage/>},
             {path: "genres/:genreId", element: <GenresPage/>},
-            {path: 'search', element: <SearchResultPage/>}
+            {path: '/search', element: <SearchResultPage/>}
         ]
     }
 ])

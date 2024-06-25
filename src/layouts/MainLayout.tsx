@@ -1,7 +1,7 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
-import {ThemeProvider} from "../components/ThemeContext";
-import HeaderComponent from "../components/HeaderComponent";
+import {ThemeProvider} from "../components/context/ThemeContext";
+import HeaderComponent from "../components/header/HeaderComponent";
 
 
 const MainLayout = () => {

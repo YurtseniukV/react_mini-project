@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-import SearchComponent from "./SearchComponent";
-import UserInfoComponent from "./UserInfoComponent";
-import classes from "../assets/css/Header.module.css";
-import {ThemeContext} from "../components/ThemeContext";
-import "../assets/css/theme.css"
+import SearchComponent from "../search/SearchComponent";
+import classes from "../../assets/css/Header.module.css";
+import {ThemeContext} from "../context/ThemeContext";
+import "../../assets/css/theme.css"
+import "../../index.css"
+import UserInfoComponent from "../header/UserInfoComponent"
 
 const HeaderComponent: React.FC = () => {
     const themeContext = useContext(ThemeContext);
@@ -17,7 +18,6 @@ const HeaderComponent: React.FC = () => {
 
     return (
         <div className={classes.Header}>
-            <Link to={'/'}>Home</Link>
             <Link to={'/movies'}>Movies</Link>
             <Link to={'/genres'}>Genres</Link>
             <SearchComponent/>
@@ -38,6 +38,7 @@ const HeaderComponent: React.FC = () => {
 
             <UserInfoComponent/>
         </div>
+
 
     );
 };

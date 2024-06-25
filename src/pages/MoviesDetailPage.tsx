@@ -1,16 +1,15 @@
 import React from 'react';
-import MovieListCardComponent from "../components/MovieListCardComponent";
+import MovieListCardComponent from "../components/movie/MovieListCardComponent";
 import {useParams} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../redux/hooks";
+import {useAppSelector} from "../redux/hooks";
 import {IMovieModel} from "../models/IMovieModel";
+import "../index.css"
 
 
 const MoviesDetailPage = () => {
 
     const {id} = useParams<{ id: string }>();
-    const dispatch = useAppDispatch();
     let movie: IMovieModel | undefined = useAppSelector(state => state.moviesSlice.movies.find(movie => movie.id === parseInt(id!)));
-
     const error = useAppSelector(state => state.moviesSlice.error);
 
 
@@ -20,11 +19,11 @@ const MoviesDetailPage = () => {
 
 
     return (
-        <div>
-            <div>
+        <div className="moviesDetailPage">
                 {error && <div>Error: {error}</div>}
                 <MovieListCardComponent movie={movie}/>
-            </div>
+            <div className="moviesDetailContent"><h1>{movie.title}</h1><p>{movie.overview}</p>
+            <span>Release date : {movie.release_date}</span></div>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useAppSelector} from "../redux/hooks";
-import MovieListComponent from "../components/MovieListComponent";
-import PaginationComponent from "../components/PaginationComponent";
+import MovieListComponent from "../components/movie/MovieListComponent";
+import PaginationComponent from "../components/pagination/PaginationComponent";
 import "../index.css"
 
 

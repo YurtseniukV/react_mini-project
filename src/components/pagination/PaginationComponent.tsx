@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../redux/hooks";
+import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {useSearchParams} from "react-router-dom";
-import {moviesActions} from "../redux/slices/moviesSlice";
-import "../index.css"
+import {moviesActions} from "../../redux/slices/moviesSlice";
+import "../../index.css"
 
 const PaginationComponent = () => {
     const dispatch = useAppDispatch();

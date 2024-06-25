@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {movieServices} from '../services/api.services';
+import {movieServices} from '../../services/api.services';
 
 
 const SearchComponent: FC = () => {
